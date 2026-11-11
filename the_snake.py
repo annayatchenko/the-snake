@@ -13,7 +13,9 @@
 
 from random import choice, randint
 
+import os
 import pygame
+import sys
 
 # Константы для размеров поля и сетки:
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
@@ -50,10 +52,6 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
 # Заголовок окна игрового поля:
 pygame.display.set_caption('Змейка/The snake')
-
-# Иконка игры:
-icon = pygame.image.load('green python.jpeg')
-pygame.display.set_icon(icon)
 
 # Настройка времени:
 clock = pygame.time.Clock()
@@ -226,6 +224,20 @@ def reset_game(snake, apple, pear):
     # Отрисовываем объекты заново на чистом поле
     apple.draw(screen)
     pear.draw(screen)
+
+
+def resource_path(relative_path):
+    """Получает абсолютный путь к ресурсам, работает и при сборке"""
+    try:
+        # PyInstaller создает временную папку _MEIPASS при запуске .exe
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+
+# Иконка игры:
+resource_path("green python.jpeg")
 
 
 def main():
