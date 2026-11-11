@@ -4,6 +4,7 @@
 
 Запуск (Launch): python the_snake.py
 Зависимость (Dependency): pygame
+Exe-версию игры ищите в папке "output" (Look for the EXE version of the game in the “output” folder).
 
 Правила (Roles):
 - Управляйте зеленой змейкой с помощью стрелок
